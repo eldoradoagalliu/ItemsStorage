@@ -1,0 +1,1 @@
+INSERT INTO items (name, type, price, quantity, date_created) VALUES (?, ?, ?, ?, ?)

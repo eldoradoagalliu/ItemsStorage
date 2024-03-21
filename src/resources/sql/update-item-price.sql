@@ -1,0 +1,1 @@
+UPDATE items SET price = ? WHERE name = ?
