@@ -2,7 +2,12 @@ import connection.DatabaseConnection;
 import model.Item;
 import util.SqlFileReader;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -27,32 +32,29 @@ public class ItemsStorageApplication {
             menu();
             String option = input.nextLine();
             switch (option) {
-                case "1":
-                    checkStorage(connection);
-                    break;
-                case "2":
-                    addItem(connection);
-                    break;
-                case "3":
+                case "1" -> checkStorage(connection);
+                case "2" -> addItem(connection);
+                case "3" -> {
                     checkStorage(connection);
                     System.out.print(INSERT + "name of the item you want to change the price: ");
+
                     String itemName = input.nextLine();
                     changeItemPrice(itemName, connection);
-                    break;
-                case "4":
+                }
+                case "4" -> {
                     checkStorage(connection);
                     System.out.print(INSERT + "name of the item you want to delete: ");
+
                     String itemToBeDeleted = input.nextLine();
                     deleteItem(itemToBeDeleted, connection);
-                    break;
-                case "5":
+                }
+                case "5" -> {
                     exit = true;
                     connection.close();
                     input.close();
                     System.out.print("\nYou are exiting from the Items Storage!\n");
-                    break;
-                default:
-                    System.out.println("\nWrong option number!\n");
+                }
+                default -> System.out.println("\nWrong option number!\n");
             }
         }
     }
