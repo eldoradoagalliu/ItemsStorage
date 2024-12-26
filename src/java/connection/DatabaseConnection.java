@@ -1,5 +1,6 @@
 package connection;
 
+import util.ConfigFileReader;
 import util.SqlFileReader;
 
 import java.sql.Connection;
@@ -10,15 +11,12 @@ import static util.SqlFileReader.PATH;
 
 public class DatabaseConnection {
     public static Connection initializeDatabase() throws SQLException {
-        //Add the dependencies of Java DB connector on the project structure!!!
-
-        //Run the java application once with the below code
-        //DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+        ConfigFileReader configFileReader = new ConfigFileReader();
 
         //Database properties
-        String url = "jdbc:mysql://localhost:3306/items_storage_schema";
-        String username = "root";
-        String password = "root";
+        String url = configFileReader.getUrl();
+        String username = configFileReader.getUsername();
+        String password = configFileReader.getPassword();
         Connection connection = DriverManager.getConnection(url, username, password);
 
         //The table with be created in the Database if it doesn't exist
