@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS items_storage_schema.items (
+CREATE TABLE IF NOT EXISTS items_storage.items (
         id INT NOT NULL AUTO_INCREMENT,
         name VARCHAR(45) NOT NULL,
         type VARCHAR(45) NOT NULL,
@@ -6,5 +6,5 @@ CREATE TABLE IF NOT EXISTS items_storage_schema.items (
         quantity INT NOT NULL,
         date_created DATETIME NOT NULL,
         PRIMARY KEY (id),
-        UNIQUE INDEX name_UNIQUE (name ASC) VISIBLE
-    )
+        UNIQUE INDEX name_UNIQUE (name ASC)
+)
